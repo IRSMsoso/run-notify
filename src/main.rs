@@ -4,6 +4,8 @@ use serde::Deserialize;
 use std::fs::{create_dir_all, File};
 use std::io::{Read, Write};
 use std::process::Command;
+use std::thread::sleep;
+use std::time::Duration;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, trailing_var_arg = true)]
@@ -140,6 +142,10 @@ fn main() {
             }
 
             if cli.shutdown {
+                println!("Shutting down in 10 seconds");
+
+                sleep(Duration::from_secs(10));
+
                 match system_shutdown::shutdown() {
                     Ok(_) => {
                         println!("Shutting down");
