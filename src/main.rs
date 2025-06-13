@@ -1,11 +1,11 @@
 use clap::Parser;
 use clap_derive::Parser;
-use serde::Deserialize;
 use std::fs::{create_dir_all, File};
 use std::io::{Read, Write};
 use std::process::Command;
 use std::thread::sleep;
 use std::time::Duration;
+use serde::Deserialize;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, trailing_var_arg = true)]
