@@ -46,14 +46,17 @@ fn main() {
             }
         };
 
-        match file.write_all(b"app_token=\nuser_key=") {
+        match file.write_all(b"app_token=\"\"\nuser_key=\"\"") {
             Ok(_) => {}
             Err(e) => {
                 panic!("Cannot write to config file at {:?}: {e}", path);
             }
         }
 
-        println!("Config file generated. Fill it out before running again.");
+        println!(
+            "Config file generated at {:?}. Fill it out before running again.",
+            path
+        );
         return;
     }
 
@@ -91,7 +94,11 @@ fn main() {
 
                 params.push((
                     "message".to_string(),
-                    format!("Command Succeeded\n{}", cli.command.join(" ")),
+                    format!(
+                        "[{}] {}",
+                        gethostname::gethostname().to_string_lossy(),
+                        cli.command.join(" ")
+                    ),
                 ));
 
                 params.push(("title".to_string(), "Command Succeeded".to_string()));
@@ -100,7 +107,11 @@ fn main() {
 
                 params.push((
                     "message".to_string(),
-                    format!("Command Failed\n{}", cli.command.join(" ")),
+                    format!(
+                        "[{}] {}",
+                        gethostname::gethostname().to_string_lossy(),
+                        cli.command.join(" ")
+                    ),
                 ));
 
                 params.push(("title".to_string(), "Command Failed".to_string()));
@@ -129,7 +140,7 @@ fn main() {
             }
 
             if cli.shutdown {
-                match system_shutdown::sleep() {
+                match system_shutdown::shutdown() {
                     Ok(_) => {
                         println!("Shutting down");
                     }
