@@ -13,3 +13,7 @@ With cargo. Clone the repo and `cargo install --path .`
 Anything after run_notify and it's flags is interpreted as the command and it's arguments, for example: `run_notify -s ls -l` is valid.
 
 Optionally, `run_notify -s <COMMAND>` to shutdown your PC after the command completes.
+
+## Configuration
+
+You need to configure the app token and user key for pushover requests. Run the program once to generate the config file.
