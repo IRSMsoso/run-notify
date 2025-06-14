@@ -2,6 +2,11 @@
 name = "run_notify"
 version = "0.1.0"
 edition = "2024"
+authors = ["Cameron VanderTuig"]
+license-file = "LICENSE"
+description = "Runs another command, sending a notification to pushover when it completes"
+repository = "https://github.com/IRSMsoso/run-notify"
+readme = "README.md"
 
 [dependencies]
 clap = "4.5.37"
