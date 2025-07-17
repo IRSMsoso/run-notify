@@ -5,7 +5,7 @@ Optionally, you can also shut down your PC after the command completes.
 
 ## Install
 
-With cargo. Clone the repo and `cargo install run_notify`
+With cargo. `cargo install run_notify`
 
 ## Usage
 
